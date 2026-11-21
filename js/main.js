@@ -65,3 +65,20 @@ formulario.addEventListener('submit', evento => {
     console.log('Datos listos para enviar:', datos);
     estado.textContent = '[PLACEHOLDER] Envío aún no conectado.';
 });
+
+// --- 5. Aparición suave al hacer scroll ---
+// Las secciones (menos el inicio) aparecen al entrar en pantalla
+const bloques = document.querySelectorAll('.seccion:not(.seccion-inicio) .container');
+const observador = new IntersectionObserver((entradas) => {
+    entradas.forEach(entrada => {
+        if (entrada.isIntersecting) {
+            entrada.target.classList.add('visible');
+            observador.unobserve(entrada.target); // solo la primera vez
+        }
+    });
+}, { threshold: 0.15 });
+
+bloques.forEach(bloque => {
+    bloque.classList.add('revelar');
+    observador.observe(bloque);
+});
