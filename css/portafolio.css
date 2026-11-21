@@ -956,3 +956,10 @@ code, .etiqueta-tecnologia { font-family: 'JetBrains Mono', monospace; }
     html { scroll-behavior: auto; }
     * { transition: none !important; }
 }
+
+/* Animación de aparición al hacer scroll (agregado) */
+.revelar { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.revelar.visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+    .revelar { opacity: 1; transform: none; }
+}
