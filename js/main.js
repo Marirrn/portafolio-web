@@ -35,7 +35,24 @@ const en = {
     "inicio.proyectos": "View projects",
     "inicio.contacto": "Contact",
     "about.p1": "I am a responsible and committed person whose curiosity for solving problems drove me to join the world of technology. I describe myself as collaborative, with a strong ability to adapt to new technical environments. I enjoy learning innovative tools, exploring different areas of the industry, and adding value through teamwork.",
-    "c.linea": "Email: <a href=\"mailto:m.rodriguez.portafolio@gmail.com\">m.rodriguez.portafolio@gmail.com</a> · <a href=\"https://mrodriguez-git.github.io/portafolio-web/\">Published portfolio</a>"
+    "c.linea": "Email: <a href=\"mailto:m.rodriguez.portafolio@gmail.com\">m.rodriguez.portafolio@gmail.com</a> · <a href=\"https://mrodriguez-git.github.io/portafolio-web/\">Published portfolio</a>",
+    "pc.d": "Cryptocurrency payment platform for merchants. I worked on the backend: product and inventory management (stock is deducted on purchase), PDF invoice generation and delivery by email, per-merchant sales reports, and the layered project structure.",
+    "pc.n": "Groups the rows returned by the database: each sale is a parent record and its products are the children.",
+    "rg.d": "Dungeon game built around design patterns. I worked on the interface and gameplay: game menus (start, pause and game over), character movement, health bar and potion pickups.",
+    "le.d": "Platform for booking concert tickets. I worked on the booking flow: each concert’s page, seat selection and a simulated card payment.",
+    "le.n": "Each click adds or removes a seat from the list and recalculates the total.",
+    "pb.t": "Online store database",
+    "pb.d": "Normalized relational database (3NF) for an online technology store. I developed a large part of the team project: the table model and stored procedures with transactions and savepoints.",
+    "pb.n": "Procedure with a transaction and savepoint: if anything fails, it rolls back and returns an error code.",
+    "cf.t": "Geometric shapes calculator",
+    "cf.d": "Java application using object-oriented programming to calculate areas of geometric shapes. I developed the area calculation part.",
+    "cf.n": "Calculates a triangle’s area from its three sides using Heron’s formula.",
+    "gy.t": "Gym database",
+    "gy.d": "Database for managing a gym (clients, branches, instructors, measurements and routines). I took part from the model diagram through to the code: tables, queries and functions to calculate age, BMI and body composition.",
+    "ver.codigo": "View code",
+    "f.web": "Web",
+    "f.bd": "Databases",
+    "f.jue": "Games and desktop"
 };
 const es = {};
 document.querySelectorAll('[data-i18n]').forEach(el => { es[el.dataset.i18n] = el.innerHTML; });
@@ -86,19 +103,43 @@ botonesFiltro.forEach(boton => {
     });
 });
 
-// --- 4. Formulario de contacto ---
+// --- 4. Formulario de contacto (EmailJS) ---
+// Datos de la cuenta de EmailJS (la clave pública es segura en el navegador)
+const EMAILJS = {
+    publicKey: '[PLACEHOLDER-PUBLIC-KEY]',
+    serviceId: '[PLACEHOLDER-SERVICE-ID]',
+    templateId: '[PLACEHOLDER-TEMPLATE-ID]'
+};
+const mensajesForm = {
+    es: { enviando: 'Enviando…', ok: 'Mensaje enviado. ¡Gracias!', error: 'No se pudo enviar. Intente de nuevo más tarde.', sinConfig: '[PLACEHOLDER] Falta configurar EmailJS.' },
+    en: { enviando: 'Sending…', ok: 'Message sent. Thank you!', error: 'The message could not be sent. Please try again later.', sinConfig: '[PLACEHOLDER] EmailJS is not configured yet.' }
+};
 const formulario = document.getElementById('form-contacto');
 const estado = document.getElementById('estado-formulario');
 
-formulario.addEventListener('submit', evento => {
+formulario.addEventListener('submit', async evento => {
     evento.preventDefault();
     formulario.classList.add('was-validated');
     if (!formulario.checkValidity()) return;
 
-    // TODO: conectar aquí la librería de envío (p. ej. EmailJS) con los datos:
-    const datos = Object.fromEntries(new FormData(formulario));
-    console.log('Datos listos para enviar:', datos);
-    estado.textContent = idiomaActual === 'en' ? '[PLACEHOLDER] Sending not connected yet.' : '[PLACEHOLDER] Envío aún no conectado.';
+    const msg = mensajesForm[idiomaActual];
+    if (EMAILJS.publicKey.startsWith('[PLACEHOLDER')) { estado.textContent = msg.sinConfig; return; }
+
+    const boton = formulario.querySelector('[type="submit"]');
+    boton.disabled = true;
+    estado.textContent = msg.enviando;
+    try {
+        // Los campos name="nombre", "correo" y "mensaje" son las variables de la plantilla
+        await emailjs.sendForm(EMAILJS.serviceId, EMAILJS.templateId, formulario, { publicKey: EMAILJS.publicKey });
+        estado.textContent = msg.ok;
+        formulario.reset();
+        formulario.classList.remove('was-validated');
+    } catch (error) {
+        console.error(error);
+        estado.textContent = msg.error;
+    } finally {
+        boton.disabled = false;
+    }
 });
 
 // --- 5. Aparición suave al hacer scroll ---
