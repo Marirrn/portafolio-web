@@ -993,3 +993,8 @@ code, .etiqueta-tecnologia { font-family: 'JetBrains Mono', monospace; }
 #contacto { background: radial-gradient(circle at 100% 100%, color-mix(in srgb, var(--rojo) 25%, transparent), transparent 50%); }
 /* Tarjetas: halo de color como sombra */
 .tarjeta { box-shadow: 0 18px 40px -12px color-mix(in srgb, var(--rojo) 40%, transparent); }
+
+/* Logo del inicio (versión con fondo azul, para que el slogan se lea) y bloques de código (agregado) */
+.logo-hero { width: min(100%, 420px); height: auto; border-radius: 20px; box-shadow: 0 20px 50px -12px color-mix(in srgb, var(--rojo) 45%, transparent); }
+.bloque-codigo { background: var(--azul); color: var(--fondo-claro); border-radius: 8px; padding: 1rem; overflow-x: auto; font-size: .8rem; margin-bottom: .5rem; }
+.bloque-codigo code { font-family: 'JetBrains Mono', monospace; color: inherit; }
