@@ -49,10 +49,10 @@
         <section class="seccion seccion-inicio" id="inicio" aria-labelledby="titulo-inicio">
             <div class="container">
                 <div class="logo">
-                    <img src="css/Frame_7.png" alt="Logo de Mariana Rodríguez: Diseño, lógica y código" class="about-image">
+                    <img src="css/Logo_fondo_azul_1.png" alt="Mariana Rodríguez: Diseño, lógica y código" class="about-image logo-hero" width="524" height="292">
                 </div>
                 <div class="about-hero">
-                    <h1 class="about-title" id="titulo-inicio">Mariana Rodríguez Rodríguez</h1>
+                    <h1 class="about-title visually-hidden" id="titulo-inicio">Mariana Rodríguez Rodríguez</h1>
                     <p class="about-text" data-i18n="hero.rol">Desarrolladora y soporte técnico</p>
                     <p class="about-text" data-i18n="hero.frase">[PLACEHOLDER] Frase de presentación corta.</p>
                 </div>
@@ -100,29 +100,152 @@
                 <h2 class="section-title" id="titulo-proyectos" data-i18n="nav.proyectos">Proyectos</h2>
                 <div class="filtros-galeria" role="group" aria-label="Filtrar proyectos">
                     <button type="button" class="btn btn-secundario btn-sm activo" data-filtro="todos" data-i18n="f.todos">Todos</button>
-                    <button type="button" class="btn btn-secundario btn-sm" data-filtro="a" data-i18n="f.a">[PLACEHOLDER] Categoría A</button>
-                    <button type="button" class="btn btn-secundario btn-sm" data-filtro="b" data-i18n="f.b">[PLACEHOLDER] Categoría B</button>
+                    <button type="button" class="btn btn-secundario btn-sm" data-filtro="web" data-i18n="f.web">Web</button>
+                    <button type="button" class="btn btn-secundario btn-sm" data-filtro="bd" data-i18n="f.bd">Bases de datos</button>
+                    <button type="button" class="btn btn-secundario btn-sm" data-filtro="jue" data-i18n="f.jue">Juegos y escritorio</button>
                 </div>
-                <div class="row g-4" id="galeria">
-                    <div class="col-md-6 proyecto" data-categoria="a"><article class="tarjeta card card-body">
-                        <h3 class="h5" data-i18n="p.1">[PLACEHOLDER] Proyecto 1</h3>
-                        <p data-i18n="p.desc">[PLACEHOLDER] Descripción breve del proyecto.</p>
-                        <div><span class="etiqueta-tecnologia" data-i18n="p.tec">[PLACEHOLDER] Tecnología</span><span class="etiqueta-tecnologia" data-i18n="p.tec">[PLACEHOLDER] Tecnología</span></div>
+                <div class="row g-4 align-items-start" id="galeria">
+                    <div class="col-md-6 proyecto" data-categoria="web"><article class="tarjeta card card-body">
+                        <h3 class="h5">PuraCrypto</h3>
+                        <p data-i18n="pc.d">Plataforma de pagos con criptomonedas para comercios. Participé en el backend: gestión de productos e inventario (con descuento de stock al comprar), generación de facturas en PDF y su envío por correo, reporte de ventas por comercio y la estructura del proyecto por capas.</p>
+                        <div><span class="etiqueta-tecnologia">C#</span> <span class="etiqueta-tecnologia">.NET</span> <span class="etiqueta-tecnologia">SQL Server</span> <span class="etiqueta-tecnologia">JavaScript</span></div>
+                        <button type="button" class="btn btn-secundario btn-sm mt-3" data-bs-toggle="collapse" data-bs-target="#codigo-pc" aria-expanded="false" aria-controls="codigo-pc" data-i18n="ver.codigo">Ver código</button>
+                        <div class="collapse mt-3" id="codigo-pc">
+                            <p class="small" data-i18n="pc.n">Agrupa las filas que devuelve la base de datos: cada venta es un registro padre y sus productos son los hijos.</p>
+                            <pre class="bloque-codigo" tabindex="0"><code class="language-csharp">// Extracto abreviado
+var reportes = new Dictionary&lt;int, ReporteVentaAgrupadoDTO&gt;();
+
+foreach (var row in result)
+{
+    int checkoutId = (int)row["checkout_id"];
+
+    // Si no existe la venta, se crea la entrada padre
+    if (!reportes.ContainsKey(checkoutId))
+    {
+        reportes[checkoutId] = new ReporteVentaAgrupadoDTO
+        {
+            CheckoutId = checkoutId,
+            Total = (decimal)row["total"],
+            // ...
+        };
+    }
+
+    // Agregar producto hijo
+    reportes[checkoutId].Productos.Add(new ReporteVentaProductoDTO
+    {
+        ProductoId = (int)row["producto_id"],
+        Cantidad = (int)row["cantidad"],
+        // ...
+    });
+}</code></pre>
+                        </div>
                     </article></div>
-                    <div class="col-md-6 proyecto" data-categoria="a"><article class="tarjeta card card-body">
-                        <h3 class="h5" data-i18n="p.2">[PLACEHOLDER] Proyecto 2</h3>
-                        <p data-i18n="p.desc">[PLACEHOLDER] Descripción breve del proyecto.</p>
-                        <div><span class="etiqueta-tecnologia" data-i18n="p.tec">[PLACEHOLDER] Tecnología</span><span class="etiqueta-tecnologia" data-i18n="p.tec">[PLACEHOLDER] Tecnología</span></div>
+                    <div class="col-md-6 proyecto" data-categoria="jue"><article class="tarjeta card card-body">
+                        <h3 class="h5">Roguelike en Unity</h3>
+                        <p data-i18n="rg.d">Videojuego de mazmorras que aplica patrones de diseño. Participé en la interfaz y en la jugabilidad: menús del juego (inicio, pausa y fin de partida), movimiento del personaje, barra de vida y recogida de pociones.</p>
+                        <div><span class="etiqueta-tecnologia">Unity 6</span> <span class="etiqueta-tecnologia">C#</span></div>
                     </article></div>
-                    <div class="col-md-6 proyecto" data-categoria="b"><article class="tarjeta card card-body">
-                        <h3 class="h5" data-i18n="p.3">[PLACEHOLDER] Proyecto 3</h3>
-                        <p data-i18n="p.desc">[PLACEHOLDER] Descripción breve del proyecto.</p>
-                        <div><span class="etiqueta-tecnologia" data-i18n="p.tec">[PLACEHOLDER] Tecnología</span><span class="etiqueta-tecnologia" data-i18n="p.tec">[PLACEHOLDER] Tecnología</span></div>
+                    <div class="col-md-6 proyecto" data-categoria="web"><article class="tarjeta card card-body">
+                        <h3 class="h5">LiveEvent</h3>
+                        <p data-i18n="le.d">Plataforma para reservar entradas a conciertos. Participé en la reserva: página de cada concierto, selección de asientos y simulación del pago con tarjeta.</p>
+                        <div><span class="etiqueta-tecnologia">Node.js</span> <span class="etiqueta-tecnologia">Express</span> <span class="etiqueta-tecnologia">EJS</span> <span class="etiqueta-tecnologia">MongoDB</span></div>
+                        <button type="button" class="btn btn-secundario btn-sm mt-3" data-bs-toggle="collapse" data-bs-target="#codigo-le" aria-expanded="false" aria-controls="codigo-le" data-i18n="ver.codigo">Ver código</button>
+                        <div class="collapse mt-3" id="codigo-le">
+                            <p class="small" data-i18n="le.n">Cada clic agrega o quita un asiento de la lista y recalcula el total.</p>
+                            <pre class="bloque-codigo" tabindex="0"><code class="language-javascript">function seleccionarAsiento(event) {
+  const asiento = event.target;
+  const fila = asiento.dataset.fila;
+  const asientoNum = asiento.dataset.asiento;
+  const precio = asiento.dataset.precio;
+
+  // Verificar si el asiento ya está seleccionado
+  const indiceSeleccionado = asientosSeleccionados.findIndex(
+    s =&gt; s.fila === fila &amp;&amp; s.asiento === asientoNum
+  );
+
+  if (indiceSeleccionado !== -1) {
+    if (confirm('¿Desea deseleccionar el asiento?')) {
+      asientosSeleccionados.splice(indiceSeleccionado, 1);
+      eliminarFilaResumen(fila, asientoNum);
+      calcularTotal();
+    }
+  } else {
+    asientosSeleccionados.push({ fila, asiento: asientoNum, precio });
+    agregarFilaResumen(fila, asientoNum, precio);
+    calcularTotal();
+  }
+}</code></pre>
+                        </div>
                     </article></div>
-                    <div class="col-md-6 proyecto" data-categoria="b"><article class="tarjeta card card-body">
-                        <h3 class="h5" data-i18n="p.4">[PLACEHOLDER] Proyecto 4</h3>
-                        <p data-i18n="p.desc">[PLACEHOLDER] Descripción breve del proyecto.</p>
-                        <div><span class="etiqueta-tecnologia" data-i18n="p.tec">[PLACEHOLDER] Tecnología</span><span class="etiqueta-tecnologia" data-i18n="p.tec">[PLACEHOLDER] Tecnología</span></div>
+                    <div class="col-md-6 proyecto" data-categoria="bd"><article class="tarjeta card card-body">
+                        <h3 class="h5" data-i18n="pb.t">Base de datos de tienda virtual</h3>
+                        <p data-i18n="pb.d">Base de datos relacional normalizada (3FN) para una tienda virtual de tecnología. Desarrollé gran parte del proyecto en equipo: el modelo de tablas y los procedimientos almacenados con transacciones y savepoints.</p>
+                        <div><span class="etiqueta-tecnologia">SQL Server</span> <span class="etiqueta-tecnologia">T-SQL</span></div>
+                        <button type="button" class="btn btn-secundario btn-sm mt-3" data-bs-toggle="collapse" data-bs-target="#codigo-pb" aria-expanded="false" aria-controls="codigo-pb" data-i18n="ver.codigo">Ver código</button>
+                        <div class="collapse mt-3" id="codigo-pb">
+                            <p class="small" data-i18n="pb.n">Procedimiento con transacción y savepoint: si algo falla, deshace el cambio y devuelve un código de error.</p>
+                            <pre class="bloque-codigo" tabindex="0"><code class="language-sql">CREATE PROCEDURE GestionTienda.InsertarVenta
+    @ClienteID         INT,
+    @Total             DECIMAL(12,2) = NULL,
+    @CodigoRespuesta   INT           OUTPUT,
+    @DescripcionSalida NVARCHAR(200) OUTPUT,
+    @Mensaje           NVARCHAR(100) OUTPUT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    BEGIN TRY
+        BEGIN TRANSACTION;
+        SAVE TRANSACTION sp_InsertarVenta;
+
+        INSERT INTO GestionTienda.Ventas (ClienteID, Total)
+        VALUES (@ClienteID, @Total);
+
+        COMMIT TRANSACTION;
+        SET @CodigoRespuesta   = 200;
+        SET @DescripcionSalida = 'Inserción exitosa';
+        SET @Mensaje           = 'Venta registrada correctamente';
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION sp_InsertarVenta;
+        SET @CodigoRespuesta   = 500;
+        SET @DescripcionSalida = ERROR_MESSAGE();
+        SET @Mensaje           = 'Error al insertar venta';
+    END CATCH
+END</code></pre>
+                        </div>
+                    </article></div>
+                    <div class="col-md-6 proyecto" data-categoria="jue"><article class="tarjeta card card-body">
+                        <h3 class="h5" data-i18n="cf.t">Calculadora de figuras geométricas</h3>
+                        <p data-i18n="cf.d">Aplicación en Java con programación orientada a objetos que calcula áreas de figuras geométricas. Desarrollé la parte del cálculo de las áreas.</p>
+                        <div><span class="etiqueta-tecnologia">Java</span> <span class="etiqueta-tecnologia">POO</span></div>
+                        <button type="button" class="btn btn-secundario btn-sm mt-3" data-bs-toggle="collapse" data-bs-target="#codigo-cf" aria-expanded="false" aria-controls="codigo-cf" data-i18n="ver.codigo">Ver código</button>
+                        <div class="collapse mt-3" id="codigo-cf">
+                            <p class="small" data-i18n="cf.n">Calcula el área de un triángulo a partir de sus tres lados con la fórmula de Herón.</p>
+                            <pre class="bloque-codigo" tabindex="0"><code class="language-java">public class trianguloHeron extends areaFigurasPlanas {
+
+    private double ladoA;
+    private double ladoB;
+    private double ladoC;
+
+    public trianguloHeron(double ladoA, double ladoB, double ladoC) {
+        super("Triangulo (Heron)");
+        this.ladoA = ladoA;
+        this.ladoB = ladoB;
+        this.ladoC = ladoC;
+    }
+
+    public double calcularArea() {
+        double semiperimetro = (ladoA + ladoB + ladoC) / 2;
+        return Math.sqrt(semiperimetro * (semiperimetro - ladoA)
+                * (semiperimetro - ladoB) * (semiperimetro - ladoC));
+    }
+}</code></pre>
+                        </div>
+                    </article></div>
+                    <div class="col-md-6 proyecto" data-categoria="bd"><article class="tarjeta card card-body">
+                        <h3 class="h5" data-i18n="gy.t">Base de datos de un gimnasio</h3>
+                        <p data-i18n="gy.d">Base de datos para la gestión de un gimnasio (clientes, sedes, instructores, mediciones y rutinas). Participé desde el diagrama del modelo hasta la programación: tablas, consultas y funciones para calcular edad, IMC y composición corporal.</p>
+                        <div><span class="etiqueta-tecnologia">SQL</span> <span class="etiqueta-tecnologia">Modelo de datos</span></div>
                     </article></div>
                 </div>
             </div>
@@ -172,7 +295,7 @@
     </footer>
 
     <!-- Botones fijos -->
-    <a class="boton-flotante boton-cv" href="cv/CV_Mariana_Rodriguez_Visual2_ES.pdf" download aria-label="Descargar CV en PDF" data-cv-es="cv/CV_Mariana_Rodriguez_Visual2_ES.pdf" data-cv-en="cv/CV_Mariana_Rodriguez_Visual2_EN.pdf">
+    <a class="boton-flotante boton-cv" target="_blank" rel="noopener" href="cv/CV_Mariana_Rodriguez_Visual2_ES.pdf" download aria-label="Descargar CV en PDF" data-cv-es="cv/CV_Mariana_Rodriguez_Visual2_ES.pdf" data-cv-en="cv/CV_Mariana_Rodriguez_Visual2_EN.pdf">
         <i class="bi bi-file-earmark-arrow-down" aria-hidden="true"></i> CV
     </a>
     <a class="boton-flotante boton-whatsapp" href="https://wa.me/50688637200" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
@@ -183,6 +306,7 @@
     </button>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
