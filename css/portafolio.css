@@ -978,7 +978,7 @@ code, .etiqueta-tecnologia { font-family: 'JetBrains Mono', monospace; }
         radial-gradient(circle at 50% 30%,
             color-mix(in srgb, var(--vanilla-custard) 80%, transparent) 0%,
             color-mix(in srgb, var(--rojo) 38%, transparent) 20%,
-            color-mix(in srgb, var(--azul) 26%, transparent) 40%,
+            color-mix(in srgb, var(--azul) 10%, transparent) 40%,
             transparent 62%),
         radial-gradient(circle at 50% 30%, color-mix(in srgb, var(--vivid-tangerine) 30%, transparent), transparent 14%),
         radial-gradient(circle at 100% 100%, color-mix(in srgb, var(--rojo) 25%, transparent), transparent 45%);
@@ -998,3 +998,14 @@ code, .etiqueta-tecnologia { font-family: 'JetBrains Mono', monospace; }
 .logo-hero { width: min(100%, 420px); height: auto; border-radius: 20px; box-shadow: 0 20px 50px -12px color-mix(in srgb, var(--rojo) 45%, transparent); }
 .bloque-codigo { background: var(--azul); color: var(--fondo-claro); border-radius: 8px; padding: 1rem; overflow-x: auto; font-size: .8rem; margin-bottom: .5rem; }
 .bloque-codigo code { font-family: 'JetBrains Mono', monospace; color: inherit; }
+
+/* Inicio sin slogan en la imagen; CV en la barra de navegación (agregado) */
+.logo-hero { box-shadow: none; border-radius: 0; width: min(100%, 360px); }
+.slogan { font-family: 'Poppins', Arial, sans-serif; font-weight: 600; font-size: 1.35rem; color: var(--azul); margin: 1rem 0 .5rem; }
+.btn-cv { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; background: var(--rojo); color: var(--blanco); font-weight: 600; text-decoration: none; transition: background .2s, transform .2s; }
+.btn-cv .bi { font-size: 1.5rem; line-height: 1; }
+.btn-cv:hover { background: var(--vivid-tangerine); color: var(--blanco); transform: translateY(-2px); }
+
+/* Formulario: desvanecido suave al enviar (agregado) */
+#form-contacto { transition: opacity .5s ease; }
+#form-contacto.desvanecer { opacity: 0; }
