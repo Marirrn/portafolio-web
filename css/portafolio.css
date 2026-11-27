@@ -1011,13 +1011,12 @@ code, .etiqueta-tecnologia { font-family: 'JetBrains Mono', monospace; }
 #form-contacto.desvanecer { opacity: 0; }
 
 /* Introducción con jerarquía tipográfica y listas de habilidades (agregado) */
-.hero-hola { font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size: 1rem; letter-spacing: .08em; color: var(--rojo); margin: 1.5rem 0 .5rem; }
-.hero-lema { font-family: 'Poppins', Arial, sans-serif; font-weight: 600; font-size: clamp(1.5rem, 4vw, 2.1rem); line-height: 1.3; color: var(--azul); max-width: 26ch; margin: 0 auto 1rem; }
-.hero-lema .resalta-azul, .hero-lema .resalta-rojo, .hero-lema .resalta-naranja { font-size: 1.12em; font-weight: 700; }
-.hero-lema .resalta-rojo { color: var(--rojo); }
+.hero-hola { font-family: 'Poppins', Arial, sans-serif; font-weight: 500; font-size: 1.25rem; color: var(--rojo); margin: 1.5rem 0 .5rem; }
+.hero-lema { font-family: 'Poppins', Arial, sans-serif; font-weight: 600; font-size: clamp(1.15rem, 3vw, 1.5rem); line-height: 1.4; color: var(--azul); max-width: 30ch; margin: 0 auto 1rem; }
 .hero-lema .resalta-azul { color: var(--azul); }
+.hero-lema .resalta-rojo { color: var(--rojo); }
 .hero-lema .resalta-naranja { color: var(--vivid-tangerine); }
-.hero-bienvenida { font-size: 1.05rem; color: var(--azul); opacity: .85; margin-bottom: 1.5rem; }
+.hero-bienvenida { font-family: 'Poppins', Arial, sans-serif; font-weight: 500; font-size: 1.25rem; color: var(--rojo); margin-bottom: 1.5rem; }
 .lista-habilidades { padding-left: 1.1rem; margin: 0; }
 .lista-habilidades li { margin-bottom: .35rem; }
 
