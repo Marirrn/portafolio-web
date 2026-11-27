@@ -106,9 +106,9 @@ botonesFiltro.forEach(boton => {
 // --- 4. Formulario de contacto (EmailJS) ---
 // Datos de la cuenta de EmailJS (la clave pública es segura en el navegador)
 const EMAILJS = {
-    publicKey: '[PLACEHOLDER-PUBLIC-KEY]',
-    serviceId: '[PLACEHOLDER-SERVICE-ID]',
-    templateId: '[PLACEHOLDER-TEMPLATE-ID]'
+    publicKey: 'r-TvbZUdY7loCwLsX',
+    serviceId: 'service_4f5tfu3',
+    templateId: 'template_ppch55c'
 };
 const mensajesForm = {
     es: { enviando: 'Enviando…', ok: 'Mensaje enviado. ¡Gracias!', error: 'No se pudo enviar. Intente de nuevo más tarde.', sinConfig: '[PLACEHOLDER] Falta configurar EmailJS.' },
