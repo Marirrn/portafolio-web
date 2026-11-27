@@ -1011,7 +1011,7 @@ code, .etiqueta-tecnologia { font-family: 'JetBrains Mono', monospace; }
 #form-contacto.desvanecer { opacity: 0; }
 
 /* Introducción con jerarquía tipográfica y listas de habilidades (agregado) */
-.hero-hola { font-family: 'Poppins', Arial, sans-serif; font-weight: 500; font-size: 1.25rem; color: var(--rojo); margin: 1.5rem 0 .5rem; }
+.hero-hola { font-family: 'Poppins', Arial, sans-serif; font-weight: 500; font-size: 1.25rem; color: var(--azul); margin: 1.5rem 0 .5rem; }
 .hero-lema { font-family: 'Poppins', Arial, sans-serif; font-weight: 600; font-size: clamp(1.15rem, 3vw, 1.5rem); line-height: 1.4; color: var(--azul); max-width: 30ch; margin: 0 auto 1rem; }
 .hero-lema .resalta-azul { color: var(--azul); }
 .hero-lema .resalta-rojo { color: var(--rojo); }
