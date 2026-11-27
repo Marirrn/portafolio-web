@@ -5,7 +5,8 @@
 const en = {
     "skip": "Skip to content",
     "hero.rol": "Developer and technical support",
-    "hero.frase": "[PLACEHOLDER] Short introduction line.",
+    "hero.frase": "Hi, I’m Mariana. Welcome to my portfolio, where design, logic and code come together to solve problems in development and technical support.",
+    "hero.slogan": "Design, logic and code",
     "sk.dev": "[PLACEHOLDER] Development",
     "sk.sop": "[PLACEHOLDER] Technical support",
     "sk.her": "[PLACEHOLDER] Tools",
@@ -35,7 +36,7 @@ const en = {
     "inicio.proyectos": "View projects",
     "inicio.contacto": "Contact",
     "about.p1": "I am a responsible and committed person whose curiosity for solving problems drove me to join the world of technology. I describe myself as collaborative, with a strong ability to adapt to new technical environments. I enjoy learning innovative tools, exploring different areas of the industry, and adding value through teamwork.",
-    "c.linea": "Email: <a href=\"mailto:m.rodriguez.portafolio@gmail.com\">m.rodriguez.portafolio@gmail.com</a> · <a href=\"https://mrodriguez-git.github.io/portafolio-web/\">Published portfolio</a>",
+    "c.linea": "Email: <a href=\"mailto:m.rodriguez.portafolio@gmail.com\">m.rodriguez.portafolio@gmail.com</a> · <a href=\"https://marirrn.github.io/portafolio-web/\">Published portfolio</a>",
     "pc.d": "Cryptocurrency payment platform for merchants. I worked on the backend: product and inventory management (stock is deducted on purchase), PDF invoice generation and delivery by email, per-merchant sales reports, and the layered project structure.",
     "pc.n": "Groups the rows returned by the database: each sale is a parent record and its products are the children.",
     "rg.d": "Dungeon game built around design patterns. I worked on the interface and gameplay: game menus (start, pause and game over), character movement, health bar and potion pickups.",
@@ -65,7 +66,7 @@ function cambiarIdioma(idioma) {
     document.querySelectorAll('[data-i18n]').forEach(el => {
         el.innerHTML = textos[el.dataset.i18n];
     });
-    const cv = document.querySelector('.boton-cv');
+    const cv = document.querySelector('.btn-cv');
     cv.href = idioma === 'en' ? cv.dataset.cvEn : cv.dataset.cvEs;
     document.querySelectorAll('.btn-idioma').forEach(btn => {
         const activo = btn.dataset.idioma === idioma;
