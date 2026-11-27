@@ -1009,3 +1009,13 @@ code, .etiqueta-tecnologia { font-family: 'JetBrains Mono', monospace; }
 /* Formulario: desvanecido suave al enviar (agregado) */
 #form-contacto { transition: opacity .5s ease; }
 #form-contacto.desvanecer { opacity: 0; }
+
+/* Introducción con jerarquía tipográfica y listas de habilidades (agregado) */
+.hero-hola { font-family: 'Poppins', Arial, sans-serif; font-weight: 500; font-size: 1.25rem; color: var(--azul); margin: 1.5rem 0 .25rem; }
+.hero-lema { font-family: 'Poppins', Arial, sans-serif; font-weight: 700; font-size: clamp(1.7rem, 5vw, 2.8rem); line-height: 1.2; color: var(--azul); max-width: 20ch; margin: 0 auto .75rem; }
+.hero-lema .resalta-rojo { color: var(--rojo); }
+.hero-lema .resalta-azul { background: linear-gradient(transparent 62%, color-mix(in srgb, var(--sunflower-gold) 70%, transparent) 62%); }
+.hero-lema .resalta-naranja { color: var(--vivid-tangerine); }
+.hero-bienvenida { font-size: 1.05rem; color: var(--azul); opacity: .85; margin-bottom: 1.5rem; }
+.lista-habilidades { padding-left: 1.1rem; margin: 0; }
+.lista-habilidades li { margin-bottom: .35rem; }
