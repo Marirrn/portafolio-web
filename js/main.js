@@ -53,7 +53,8 @@ const en = {
     "ver.codigo": "View code",
     "f.web": "Web",
     "f.bd": "Databases",
-    "f.jue": "Games and desktop"
+    "f.jue": "Games and desktop",
+    "c.intro": "Have a question or want to chat? Send me a message using the form and I’ll gladly reply."
 };
 const es = {};
 document.querySelectorAll('[data-i18n]').forEach(el => { es[el.dataset.i18n] = el.innerHTML; });
@@ -112,8 +113,8 @@ const EMAILJS = {
     templateId: 'template_ppch55c'
 };
 const mensajesForm = {
-    es: { enviando: 'Enviando…', ok: 'Mensaje enviado. ¡Gracias!', error: 'No se pudo enviar. Intente de nuevo más tarde.', sinConfig: '[PLACEHOLDER] Falta configurar EmailJS.' },
-    en: { enviando: 'Sending…', ok: 'Message sent. Thank you!', error: 'The message could not be sent. Please try again later.', sinConfig: '[PLACEHOLDER] EmailJS is not configured yet.' }
+    es: { enviando: 'Enviando…', ok: 'Mensaje enviado. ¡Gracias! Pronto te estaré contactando.', error: 'No se pudo enviar. Intente de nuevo más tarde.', sinConfig: '[PLACEHOLDER] Falta configurar EmailJS.' },
+    en: { enviando: 'Sending…', ok: 'Message sent. Thank you! I’ll be in touch soon.', error: 'The message could not be sent. Please try again later.', sinConfig: '[PLACEHOLDER] EmailJS is not configured yet.' }
 };
 const formulario = document.getElementById('form-contacto');
 const estado = document.getElementById('estado-formulario');
@@ -132,9 +133,12 @@ formulario.addEventListener('submit', async evento => {
     try {
         // Los campos name="nombre", "correo" y "mensaje" son las variables de la plantilla
         await emailjs.sendForm(EMAILJS.serviceId, EMAILJS.templateId, formulario, { publicKey: EMAILJS.publicKey });
-        estado.textContent = msg.ok;
+        // El formulario se desvanece, se vacía y vuelve a aparecer con suavidad
+        formulario.classList.add('desvanecer');
+        await new Promise(r => setTimeout(r, 500));
         formulario.reset();
-        formulario.classList.remove('was-validated');
+        formulario.classList.remove('was-validated', 'desvanecer');
+        estado.textContent = msg.ok;
     } catch (error) {
         console.error(error);
         estado.textContent = msg.error;
